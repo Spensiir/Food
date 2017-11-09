@@ -1,0 +1,41 @@
+body {
+    background-color: #ffeac9;
+}
+#left {
+    float: left;
+
+}
+#right {
+    float: right;
+}
+#first {
+    font-size: 50px;
+    font-family: 'Lato', sans-serif;
+    color: white;
+    font-style: bold;
+    background-color: lightblue;
+    border: none;
+    padding: 200px 200px;
+}
+
+#second {
+    font-size: 50px;
+    font-family: 'Lato', sans-serif;
+    color: white;
+    font-style: bold;
+    background-color: lightgreen;
+    border: none;
+    padding: 200px 200px;
+}
+#result {
+    font-family: 'Lato', sans-serif;
+    font-size: 20px;
+    color: black;
+}
+#block {
+    clear: left;
+    padding: 20px;
+    align-self: middle;
+}
+#map { width: 400px; }
+#inner { width: 350px; margin: 0 auto; }

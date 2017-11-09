@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+    <script src="food.js" ></script>
+
+    <link rel="stylesheet" href="food.css">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body>
+<div id= "left">
+    <button id ="first" type= "button" onclick="buildFirst()" >Sweet?</button>
+</div>
+<div id= "right">
+    <button id ="second" type= "button" onclick="buildSecond()" >Spicy?</button>
+</div>
+<div id= "block" align= "middle"><p id="result" >Query: </p></div>
+
+
+</body>
+  <head>
+    <title>Place searches</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 400px;
+        width: 400px;
+      }
+      /* Optional: Makes the sample page fill the window. */
+
+    </style>
+    <p id="demo"></p>
+    <script>
+      // This example requires the Places library. Include the libraries=places
+      // parameter when you first load the API. For example:
+      // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+
+      var map;
+      var infowindow;
+
+
+      function initMap()
+      {
+        //getLocation();
+
+        var pyrmont = {lat: 10, lng: 10};
+
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: pyrmont,
+          zoom: 15
+        });
+
+        infowindow = new google.maps.InfoWindow();
+        var service = new google.maps.places.PlacesService(map);
+        service.nearbySearch({
+          location: pyrmont,
+          radius: 500,
+          type: [''],
+          keyword: 'dessert'
+        }, callback);
+      }
+
+      function callback(results, status) {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+          for (var i = 0; i < results.length; i++) {
+            createMarker(results[i]);
+          }
+        }
+      }
+
+      function createMarker(place) {
+        var placeLoc = place.geometry.location;
+        var marker = new google.maps.Marker({
+          map: map,
+          position: place.geometry.location
+        });
+
+        google.maps.event.addListener(marker, 'click', function() {
+          infowindow.setContent(place.name);
+          infowindow.open(map, this);
+        });
+      }
+    </script>
+  </head>
+  <body>
+    <div id="inner"><div id="map"></div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLm_WazsTL_wjzjaf-0hXNZpOv21u27uU&libraries=places&callback=initMap" async defer></script></div>
+<style>
+#inner { width: 350px; margin: 0 auto; }</style>
+
+  </body>
+</html>
